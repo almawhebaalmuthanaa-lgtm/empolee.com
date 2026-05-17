@@ -65,6 +65,14 @@
         .btn-danger:hover { background: #c0392b; transform: translateY(-2px); }
         .btn-secondary { background: #6c757d; color: white; }
         .btn-secondary:hover { background: #5a6268; transform: translateY(-2px); }
+        .btn-todo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-todo:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #6a428f 100%);
+            transform: translateY(-2px);
+        }
         .table-container {
             background: rgba(255,255,255,0.95); border-radius: 15px;
             overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
@@ -305,6 +313,7 @@
             <div class="btn-group">
                 <button class="btn btn-success" onclick="openEmployeeForm()">➕ إضافة موظف</button>
                 <button class="btn btn-danger" onclick="openDeleteForm()">❌ حذف موظف</button>
+                <button class="btn btn-todo" onclick="goToTodoList()">📋 قائمة المهام</button>
                 <button class="btn btn-success" onclick="copyAllNames()">📋 نسخ كل الأسماء</button>
                 <button class="btn btn-warning" onclick="exportToExcel()">📊 تصدير Excel</button>
                 <button class="btn btn-info" onclick="toggleColumns()">⚙️ إظهار/إخفاء الأعمدة</button>
@@ -578,6 +587,11 @@
     </div>
 
 <script>
+// ==================== NAVIGATION ====================
+function goToTodoList() {
+    window.location.href = 'todo.html';
+}
+
 // ==================== INITIAL DATA ====================
 const defaultEmployees = [
 
@@ -828,7 +842,7 @@ const defaultEmployees = [
   },
   {
     "id": "6",
-    "name": "ح��ن كاظم علوان ظاهر الحسيني",
+    "name": "حسن كاظم علوان ظاهر الحسيني",
     "job_grade": "5",
     "stage": "3",
     "job_title": "ر.ملاحظين",
@@ -872,7 +886,7 @@ const defaultEmployees = [
     "book_number": "ق.ب / 8949 في 12/5/2024",
     "email": "hasanmetall14@gmail.com",
     "department": "التحول الرقمي",
-    "unit": "التحول الرقمي",
+    "unit": "ال��حول الرقمي",
     "notes": ""
   },
   {
@@ -1080,7 +1094,7 @@ let currentPage = 1;
 let itemsPerPage = 10;
 let deleteEmployeeId = null;
 
-// ==================== INITIALIZATION ====================
+// Load from localStorage on page load
 window.addEventListener('DOMContentLoaded', function() {
     loadFromLocalStorage();
     renderTable();
